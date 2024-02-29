@@ -1,0 +1,342 @@
+\documentclass[a4paper]{article}
+
+
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, total={6in, 10in}]{geometry}
+\usepackage[framemethod=default]{mdframed}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+
+
+
+\title{Notes for STA238H1: Probability, Statistics and Data Analysis II}
+
+\author{Student from the Past}
+
+\begin{document}
+
+\global\mdfdefinestyle{Summary}{%
+linecolor=blue,linewidth=3pt,%
+leftmargin=0.05in,rightmargin=0.05in
+}
+
+
+\maketitle
+
+\newpage
+\tableofcontents
+\newpage
+\section{Preface}
+\subsection*{About}
+This document is my organized notes that provides basic concepts for STA238H1 that I took during Winter 2024 semseter at the University of Toronto. 
+Throughout the semester, I began to recognize my lack of knowledge and familiarity in \LaTeX. Also, some of my friends asked for my notes, so I just created one for all.
+The purpose of this document is to assist students, not to skip lectures.
+
+Please note that this does not contain any material related to \textsf{R} code. 
+Further, materials covered in future semesters may vary. 
+Unfortunately, I will not be able to adjust the content every semester.
+
+Each section consists of material covered in approximatly one week (4 hours). All sections begin with a summarized material in a blue box. 
+In case when reference sheets are permitted for tests, such part will be highly beneficial.
+
+\subsection*{How can I succeed?}
+Some asked me how to be successful in this course. My answer is simple: 
+attend ALL lectures AND tutorials, complete ALL practice AND extra problems, and go to office hours. 
+I had tutorials where only 3 of 50 students attended. 
+Before you start complaining how "hard" the term test was, ask yourself if you've put enough effort into these courses.
+
+\subsection*{Updates}
+If you catch a typo or incorrect information, please contact me. I will update accordingly.
+\newline
+\textbf{2024.05.01:} Initial Completion
+
+
+\newpage
+
+\newpage
+\section{Introduction to data analysis}
+\textbf{Readings:} \textit{Dekking et al., Chapter 15}
+\newline
+\textbf{Definition.} Let $\Omega$ be a sample space. Then, a \textit{random variable} $X$ is a function $X : \Omega \mapsto \mathbb{R}$
+
+\textbf{e.g}
+
+\textbf{Definition.} Do this
+    
+    \subsection{Histogram}
+        \subsubsection*{Shapes of histogram}
+        \subsubsection*{Constructing histogram}
+    \subsection{Kernel Density Estimate (KDE)}
+        \subsubsection*{Properties of Kernels}
+        \subsubsection*{Constructing KDE}
+    \subsection{Scatterplot}
+
+    \subsection{Empirical cumulative distribution function (eCDF)}
+    \subsection{Center and variabiltiy of the data}
+    \subsection{Five-number summary and boxplot}
+
+\newpage
+\section{Statistical Modelling}
+\subsection{General principle}
+\subsection{Estimating features of the model distribution}
+\newpage
+\section{Estimators and their distributions}
+\subsection{General principles}
+\subsection{Sampling distribution}
+\subsection{Distributions related to Normal distribution}
+\subsubsection*{Standard Normal distribution}
+\subsubsection*{$\chi^2(n)$ distribution}
+\subsubsection*{$t(n)$ distribution}
+\subsubsection*{$F(m,n)$ distribution}
+\newpage
+\section{Evaluating estimators}
+\subsection{Unbiased estimator}
+\subsection{Jensen's inequality}
+\subsection{Efficiency of estimators}
+\subsection{Cramer-Rao inequality}
+\subsection{Mean squared error}
+\newpage
+\section{Maximum likelihood estimation}
+\subsection{General principle}
+\subsection{Likelihood and log-likelihood function}
+\subsection{Maximum likelihood estimator}
+\newpage
+\section{Bootstrap principles}
+\begin{mdframed}[style=Summary]
+    \textbf{General definition}
+    
+        Bootstrapping approximates sampling distribution of sample statistic by resampling dataset $B$ times.
+    \newline
+    \textbf{Empirical bootsrapping method procedure}
+    \newline
+    Repeat step 1,2,3 for each $b=1,2,...,B$. 
+
+    step 1. Sample bootsrap sample of size $n$ with replacement from the given dataset.
+
+    step 2. Compute the bootsrap statistic $\hat{\theta}^{*}_b$ from the bootsrap sample obtained in step 1.
+
+    step 3. Compute the centered boostrap statistic from the bootstrap dataset:
+    $$(\hat{\theta}-\theta)^{*}_b = $$
+    \newline
+    \textbf{Parametric bootsrapping method procedure}
+    First make assumption about the shape of the sampling distribution.
+
+
+\end{mdframed}
+
+\subsection{General principle}
+\subsection{Empirical bootstrapping method}
+\subsection{Parametric bootstrapping method}
+
+\newpage
+
+\section{Confidence intervals}
+\textbf{Readings:} \textit{Dekking et al., Chapter 23 \& 24}
+\begin{mdframed}[style=Summary]
+    \textbf{General definition}
+    \newline
+    With $(1-\alpha)\%$ confidence, where $\alpha$ is called \textit{significance level}, 
+    \newline
+    $\theta$ is in \textit{confidence interval} of:
+    $$(\hat{\theta} -c, \hat{\theta} +c)$$
+    \newline
+    \textbf{Chebyshev's inequality}
+    \newline
+    Given $i.i.d.$ distributions $X_n$ with known $n, \sigma^2$, and random estimate $\hat{\mu}$ for $\mu$:
+    
+    With at least$(1-\alpha)\%$ confidence, $\mu$ is in \textit{confidence interval} of :
+    $$(-\frac{\sigma}{\sqrt{\alpha n}}+\hat{\mu}, \frac{\sigma}{\sqrt{\alpha n}}+\hat{\mu})$$
+    \newline
+    \textbf{Confidence interval of mean for Normal distribution}
+    \newline
+    Given $X_n\sim Normal(\mu, \sigma^2)$ and $(1-\alpha)\%$ confidence:
+    \newline
+    If $\sigma^2$ is given, $\mu$ is in \textit{confidence interval} of:
+    $$(\bar{x}_n -z_{\alpha/2}\frac{\sigma}{\sqrt{n}}, \bar{x}_n +z_{\alpha/2}\frac{\sigma}{\sqrt{n}})$$
+    \newline
+    If $\sigma^2$ is unknown, $\mu$ is in \textit{confidence interval} of:
+    $$(\bar{x}_n -\frac{ t_{n-1,\alpha/2}(S_n)}{\sqrt{n}}, \bar{x}_n +\frac{ t_{n-1,\alpha/2}(S_n)}{\sqrt{n}})$$
+    \newline
+    \textbf{Confidence interval of mean for unknown distribution}
+    \newline
+    With $(1-\alpha)\%$ confidence,
+    \newline
+    When $n$ is considered large, apply CLT to approximate sampling distribution to be standard Normal.
+    $\mu$ is in approximate \textit{confidence interval} of:
+    $$(\bar{x}_n -z_{\alpha/2}\frac{s_n}{\sqrt{n}}, \bar{x}_n +z_{1-\alpha/2}\frac{s_n}{\sqrt{n}})$$
+    \newline
+    When $n$ is not cosidered large, use empirical bootstrap method to estimate the distribution.
+    $\mu$ is in approximate \textit{confidence interval} of $$(\bar{x}_n -c^{*}_{u}\frac{s_n}{\sqrt{n}}, \bar{x}_n +c^{*}_{u}\frac{s_n}{\sqrt{n}})$$
+\end{mdframed}
+\subsection{General principles}
+Previously, \textit{sample statistics} were used as estimators for distribution parameters. 
+Specifically, a single estimate was used for each parameter, but we know there are underlying uncertainties associated.
+We can quantify the uncertainty (or how "confident" we are about the estimate) by using \textit{confidence intervals}.
+\newline
+\begin{mdframed}[]
+    \textbf{Confidence interval}
+    \newline
+    Consider sample size of $n$ from a distribution $X$ with parameter $\theta$ with finite expectation and variance ($\mu_{X}, \sigma_{X} < \infty$).
+    We want to determine the possible values for $\theta$, given the data.
+    \newline
+    Suppose $\hat{\theta}$ is an estimator for ${\theta}$. Then using sampling distribution of $\hat{\theta}$, we can study 
+    \newline
+    $$P(\hat{\theta}-c < \theta < \hat{\theta} + c) = 1-\alpha$$
+    \newline
+    Here, the interval $(\hat{\theta}-c, \hat{\theta} + c)$, or $(L_n, U_n)$ is \textit{confidence interval}, which contains $\theta$ with the probability of $1-\alpha$.
+    In other words, given a dataset, we are \textit{$(1-\alpha)$\% confident} that true $\theta$ is between $\hat{\theta}-c$ and $\hat{\theta} + c$, where $1-\alpha$ is \textit{confidence} level and $\alpha$ is \textit{significance} level.
+    \newline
+    \textbf{note.} $L_n, U_n$ are random, while $\theta, \alpha$ are constant.
+\end{mdframed}
+The following subsections will introduce how to construct $c$ under different conditions.
+
+\subsection{Chebyshev's inequality}
+Consider \textit{i.i.d.} distributions $X_1,...,X_n$ with parameter with $\mu_{X}, \sigma_{X} < \infty$.
+\newline
+If we expand the absolute value from the inequality, we can construct the confidence interval.
+
+\begin{mdframed}[]
+    Suppose $\hat{\mu}$ is an estimator for ${\mu}$. Then $\mathbb{E}[\hat{\mu}] = \mu$ and $Var(X) = \frac{\sigma^2}{n}$. Now, we can construct the Chebyshev's inequality.
+    $$P(\|\hat{\mu}-\mathbb{E}[\hat\mu]\| \le \epsilon) \ge 1-\frac{Var(X)}{\epsilon^2}$$
+    $$P(\|\hat{\mu}-\mu\| \le \epsilon) \ge 1-\frac{\frac{\sigma^2}{n}}{\epsilon^2}=1-\frac{\sigma^2}{n\epsilon^2}$$
+    Then, we know $1-\frac{\sigma^2}{n\epsilon^2}$ is the confidence level.
+    Now, given the significance level, we are able to construct general confidence interval in terms of $\hat{\mu}, n, \sigma^2,\alpha$:
+    $$P(-\frac{\sigma}{\sqrt{\alpha n}}+\hat{\mu}\le\mu\le\frac{\sigma}{\sqrt{\alpha n}}+\hat{\mu})\ge 1-\alpha$$
+    \newline
+    \textbf{Interpretation}
+    \newline
+    $\mu$ is in the interval $(-\frac{\sigma}{\sqrt{\alpha n}}+\hat{\mu}, \frac{\sigma}{\sqrt{\alpha n}}+\hat{\mu})$ with confidence of \textit{at least} $(1-\alpha)\%$
+    \newline
+\end{mdframed}
+\textbf{note.} 
+\newline
+Remember that Chebyshev's inequality provided above is associated with the \textit{minimum} value.
+\newline
+If we were to use the inequality related to maximum value, it would provide the \textit{maximum} value for confidence level.
+\begin{mdframed}[]
+    \textbf{Example}
+    \newline
+    Suppose we are looking for confidence interval for $\mu$, with \textit{at least} $70\%$ confidence level for distribution $X$ with $\sigma^2=25$, $n=100$, $\hat{\mu}=10$.
+    \newline
+    Referring back to how we constructed confidence interval using Chebyshev's inequality:
+    $$P(\|\hat{\mu}-\mu\| \le \epsilon)\ge1-\frac{\sigma^2}{n\epsilon^2}=0.7$$
+    Substiuting the variables with given values, we can solve for $\epsilon$:
+    $$1-\frac{25}{100\epsilon^2}=0.7$$
+    $$\epsilon = \frac{5}{\sqrt{0.3(100)}}$$
+    Now we can compute the confidence interval:
+    $$P(\|10-\mu\| \le \frac{5}{\sqrt{0.3(100)}})\ge0.7$$
+    $$P(-\frac{5}{\sqrt{0.3(100)}}-10\le -\mu \le \frac{5}{\sqrt{0.3(100)}}+10) \ge 0.7$$
+    $$P(-\frac{5}{\sqrt{0.3(100)}}+10\le \mu \le \frac{5}{\sqrt{0.3(100)}}+10) \ge 0.7$$
+    $$P(9.087\le \mu \le 10.913) \ge 0.7$$
+    \textbf{Interpretation}
+    \newline
+    $\mu$ is in the interval $(9.087, 10.913)$ with confidence of least $70\%$.
+
+\end{mdframed}
+
+\subsection{Normal distribution for mean}
+In some conditions, we are given that the dataset follows Normal distribution, which means we don't have to approximate the distribution of the dataset. 
+Then, there are two methods to construct confidence interval for $\mu$, depending on whether the other parameter, variance, is known.
+Unlike Chebyshev's inequality, this method will provide exact confidence level for constructed interval.
+
+Consider \textit{i.i.d} distributions $X_1,...X_n \sim Normal(\mu,\sigma^2)$. 
+Since we are looking for confidence interval for $\mu$, we know it will be unknown, but what about $\sigma^2$? 
+We can construct confidence intervals regardless by estimating $\sigma^2$ or using the given $\sigma^2$.
+\begin{mdframed}
+    \textbf{Known variance}
+    \newline
+    If variance is known, the construction of confidence interval is fairly simple when using standard Normal:
+    \newline
+    Going back to general definition of confidence interval:
+    $$P(L_n<\mu<U_n) = 1- \alpha$$
+    We can convert this with \textit{critical values} of standard Normal distribution:
+    $$P(z_{1-\alpha/2}<\frac{\bar{X}_n - {\mu}}{\sigma/\sqrt{n}}<z_{\alpha/2}) = 1-\alpha$$
+    $$P(z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}<\bar{X}_n - {\mu}< z_{\alpha/2}\frac{\sigma}{\sqrt{n}}) = 1-\alpha$$
+    $$P(\bar{X}_n-z_{\alpha/2}\frac{\sigma}{\sqrt{n}}<\mu< \bar{X}_n+z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}) = 1-\alpha$$
+    \textbf{Interpretation}
+    \newline
+    $\mu$ is in the interval $(\bar{x}_n-z_{\alpha/2}\frac{\sigma}{\sqrt{n}}, \bar{x}_n+z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}})$ with confidence of $(1-\alpha)\%$
+\end{mdframed}
+\begin{mdframed}
+    \textbf{Unknown variance}
+    \newline
+    Since the variance is unknown, the best alternative would be to estimate $\sigma^2$ with sample variance $S^2_n$.
+    Here, since true variance was not used, we cannot directly use standard Normal distribution. Instead, we can use \textit{t}-distribution as an alternative:
+    \newline
+    Going back to general definition of confidence interval and \textit{studentized mean} $\frac{\bar{X}_n - {\mu}}{S_n/\sqrt{n}}$:
+    $$P(L_n<\mu<U_n) = 1- \alpha$$
+    We can convert this with $t_{m,p}$, which is the $(1-p)^{th}$ quantile of the $t(m)$ distribution:
+    $$P(t_{n-1,1-\alpha/2}<\frac{\bar{X}_n - {\mu}}{S_n/\sqrt{n}}<t_{n-1,\alpha/2}) = 1-\alpha$$
+    $$P(t_{n-1,1-\alpha/2}\frac{S_n}{\sqrt{n}}<{\bar{X}_n - {\mu}}<t_{n-1,\alpha/2}\frac{S_n}{\sqrt{n}}) = 1-\alpha$$
+    $$P(\bar{X}_n-t_{n-1,1-\alpha/2}\frac{S_n}{\sqrt{n}}<\mu< \bar{X}_n+t_{n-1,\alpha/2}\frac{S_n}{\sqrt{n}}) = 1-\alpha$$
+    \textbf{Interpretation}
+    \newline
+    $\mu$ is in the interval $(\bar{x}_n-t_{(n-1,1-\alpha/2)}\frac{s_n}{\sqrt{n}},\bar{x}_n+t_{(n-1,\alpha/2)}\frac{s_n}{\sqrt{n}})$ with confidence of $(1-\alpha)\%$
+\end{mdframed}
+\textbf{note.}
+\newline
+Remember that when dealing with $S^2_n$ for $t$-distribution, you need to first find $S^2_n$ with $\frac{Var(X_i)}{n-1}$ before you take the root of it.
+
+\subsection{Unknown distribution for mean}
+When we are not given with the distribution, often times we would have to estimate the distribution as well. If we have large enough sample size, we can apply central limit theorem. If not, we can apply bootstrpping principle to estimate the distribution.
+
+\begin{mdframed}
+    \textbf{Large sample}
+    \newline
+    Consider \textit{i.i.d} unknown distributions $X_1,...X_n$. If we conclude that $n$ is sufficiently large enough, we can estimate that $X_i \sim Normal(\mu_{x}, \frac{\sigma_{x}^2}{n})$. Since $\sigma_x^2$ is also unknown, we would have to approximate it with sample variance $S_n^2$. Now, similar to how we constructed the confidence interval for Normal distribution:
+    $$P(z_{1-\alpha/2}<\frac{\bar{X}_n - {\mu}}{S_n/\sqrt{n}}<z_{\alpha/2}) = 1-\alpha$$
+    $$P(z_{1-\alpha/2}\frac{S_n}{\sqrt{n}}<\bar{X}_n - {\mu}< z_{\alpha/2}\frac{S_n}{\sqrt{n}}) = 1-\alpha$$
+    $$P(\bar{X}_n-z_{\alpha/2}\frac{S_n}{\sqrt{n}}<\mu< \bar{X}_n+z_{1-\alpha/2}\frac{S_n}{\sqrt{n}}) = 1-\alpha$$
+    \newline
+    \textbf{Interpretation}
+    \newline
+    $\mu$ is in the interval $(\bar{x}_n-z_{\alpha/2}\frac{s_n}{\sqrt{n}}, \bar{x}_n+z_{1-\alpha/2}\frac{s_n}{\sqrt{n}})$ with confidence of $(1-\alpha)\%$
+\end{mdframed}
+\begin{mdframed}
+    \textbf{Small sample}
+    \newline
+    Consider \textit{i.i.d} unknown distributions $X_1,...X_n$. If we conclude that $n$ is not large enough, we cannot apply central limit theorem to approximate the distribution. So, we use empirical bootstrapping method as an alternative.
+    \newline
+    \textbf{bootstrapping}
+    \newline
+    Repeat step 1,2 for each $b=1,2,...,B$. 
+
+        step 1. Sample bootsrap sample of size $n$ with replacement from the given dataset.
+
+        step 2. Compute the bootsrap studentized mean $t^{*}_b=\frac{\bar{x}^{*}_{n}-\bar{x}_n}{s^{*}_n/\sqrt{n}}$ from step 1.
+    \newline
+    Now, we have $B$ copies of $t^{*}_b$, which approximates the distribution of studentized mean. Then, we approximate critical values $c^{*}_l, c^{*}_u$ using quantiles of bootstrap sample and construct the confidence interval:
+    $$P(c^{*}_{l}<\frac{\bar{X}_n - {\mu}}{S_n/\sqrt{n}}<c^{*}_{u}) = 1-\alpha$$
+    $$P(c^{*}_{u}\frac{S_n}{\sqrt{n}}<\bar{X}_n - {\mu}< c^{*}_{l}\frac{S_n}{\sqrt{n}}) = 1-\alpha$$
+    $$P(\bar{X}_n-c^{*}_{l}\frac{S_n}{\sqrt{n}}<\mu< \bar{X}_n+c^{*}_{u}\frac{S_n}{\sqrt{n}}) = 1-\alpha$$
+    \newline
+    \textbf{Interpretation}
+    \newline
+    $\mu$ is in the interval $(\bar{x}_n-c^{*}_{l}\frac{s_n}{\sqrt{n}}, \bar{x}_n+c^{*}_{u}\frac{s_n}{\sqrt{n}})$ with confidence of $(1-\alpha)\%$
+\end{mdframed}
+\textbf{note.}
+\newline
+As mentioned in previous section, make sure to practice bootsrapping with small values of $B$ instead of relying on computing powers. 
+
+\newpage
+\section{Statistical testing}
+
+\newpage
+\section{Goodness of fit}
+
+\newpage
+\section{Introduction to Bayesian inference}
+The next three sections are my favorite part of statistics. 
+
+\newpage
+\section{Estimation in Bayesian inference}
+
+\newpage
+\section{Predictive modelling}
+\section{Endnote}
+
+\end{document}

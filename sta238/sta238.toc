@@ -1,0 +1,41 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {1}Preface}{3}{}%
+\contentsline {section}{\numberline {2}Introduction to data analysis}{4}{}%
+\contentsline {subsection}{\numberline {2.1}Histogram}{4}{}%
+\contentsline {subsection}{\numberline {2.2}Kernel Density Estimate (KDE)}{4}{}%
+\contentsline {subsection}{\numberline {2.3}Scatterplot}{4}{}%
+\contentsline {subsection}{\numberline {2.4}Empirical cumulative distribution function (eCDF)}{4}{}%
+\contentsline {subsection}{\numberline {2.5}Center and variabiltiy of the data}{4}{}%
+\contentsline {subsection}{\numberline {2.6}Five-number summary and boxplot}{4}{}%
+\contentsline {section}{\numberline {3}Statistical Modelling}{5}{}%
+\contentsline {subsection}{\numberline {3.1}General principle}{5}{}%
+\contentsline {subsection}{\numberline {3.2}Estimating features of the model distribution}{5}{}%
+\contentsline {section}{\numberline {4}Estimators and their distributions}{6}{}%
+\contentsline {subsection}{\numberline {4.1}General principles}{6}{}%
+\contentsline {subsection}{\numberline {4.2}Sampling distribution}{6}{}%
+\contentsline {subsection}{\numberline {4.3}Distributions related to Normal distribution}{6}{}%
+\contentsline {section}{\numberline {5}Evaluating estimators}{7}{}%
+\contentsline {subsection}{\numberline {5.1}Unbiased estimator}{7}{}%
+\contentsline {subsection}{\numberline {5.2}Jensen's inequality}{7}{}%
+\contentsline {subsection}{\numberline {5.3}Efficiency of estimators}{7}{}%
+\contentsline {subsection}{\numberline {5.4}Cramer-Rao inequality}{7}{}%
+\contentsline {subsection}{\numberline {5.5}Mean squared error}{7}{}%
+\contentsline {section}{\numberline {6}Maximum likelihood estimation}{8}{}%
+\contentsline {subsection}{\numberline {6.1}General principle}{8}{}%
+\contentsline {subsection}{\numberline {6.2}Likelihood and log-likelihood function}{8}{}%
+\contentsline {subsection}{\numberline {6.3}Maximum likelihood estimator}{8}{}%
+\contentsline {section}{\numberline {7}Bootstrap principles}{9}{}%
+\contentsline {subsection}{\numberline {7.1}General principle}{9}{}%
+\contentsline {subsection}{\numberline {7.2}Empirical bootstrapping method}{9}{}%
+\contentsline {subsection}{\numberline {7.3}Parametric bootstrapping method}{9}{}%
+\contentsline {section}{\numberline {8}Confidence intervals}{10}{}%
+\contentsline {subsection}{\numberline {8.1}General principles}{10}{}%
+\contentsline {subsection}{\numberline {8.2}Chebyshev's inequality}{11}{}%
+\contentsline {subsection}{\numberline {8.3}Normal distribution for mean}{12}{}%
+\contentsline {subsection}{\numberline {8.4}Unknown distribution for mean}{12}{}%
+\contentsline {section}{\numberline {9}Statistical testing}{14}{}%
+\contentsline {section}{\numberline {10}Goodness of fit}{15}{}%
+\contentsline {section}{\numberline {11}Introduction to Bayesian inference}{16}{}%
+\contentsline {section}{\numberline {12}Estimation in Bayesian inference}{17}{}%
+\contentsline {section}{\numberline {13}Predictive modelling}{18}{}%
+\contentsline {section}{\numberline {14}Endnote}{18}{}%
