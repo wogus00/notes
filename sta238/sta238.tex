@@ -1,7 +1,5 @@
 \documentclass[a4paper]{article}
 
-
-
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[a4paper, total={6in, 10in}]{geometry}
@@ -11,11 +9,9 @@
 \usepackage{graphicx}
 \usepackage[colorinlistoftodos]{todonotes}
 
-
-
 \title{Notes for STA238H1: Probability, Statistics and Data Analysis II}
 
-\author{Student from the Past}
+\author{Jaehyeon Park}
 
 \begin{document}
 
@@ -23,8 +19,6 @@
 linecolor=blue,linewidth=3pt,%
 leftmargin=0.05in,rightmargin=0.05in
 }
-
-
 \maketitle
 
 \newpage
@@ -40,8 +34,9 @@ Please note that this does not contain any material related to \textsf{R} code.
 Further, materials covered in future semesters may vary. 
 Unfortunately, I will not be able to adjust the content every semester.
 
-Each section consists of material covered in approximatly one week (4 hours). All sections begin with a summarized material in a blue box. 
-In case when reference sheets are permitted for tests, such part will be highly beneficial.
+Each section consists of material covered in approximatly one week (4 hours). 
+All sections begin with a summarized material in a blue box. In case when reference sheets are permitted for tests, such part will be highly beneficial.
+Some subsections contain examples. Existence of examples does not imply heavier emphasis on such content. I was simply lazy.
 
 \subsection*{How can I succeed?}
 Some asked me how to be successful in this course. My answer is simple: 
@@ -51,23 +46,14 @@ Before you start complaining how "hard" the term test was, ask yourself if you'v
 
 \subsection*{Updates}
 If you catch a typo or incorrect information, please contact me. I will update accordingly.
-\newline
-\textbf{2024.05.01:} Initial Completion
-
-
-\newpage
-
 \newpage
 \section{Introduction to data analysis}
 \textbf{Readings:} \textit{Dekking et al., Chapter 15}
 \newline
-\textbf{Definition.} Let $\Omega$ be a sample space. Then, a \textit{random variable} $X$ is a function $X : \Omega \mapsto \mathbb{R}$
-
-\textbf{e.g}
-
-\textbf{Definition.} Do this
+\begin{mdframed}[style=Summary]
     
-    \subsection{Histogram}
+\end{mdframed}
+        \subsection{Histogram}
         \subsubsection*{Shapes of histogram}
         \subsubsection*{Constructing histogram}
     \subsection{Kernel Density Estimate (KDE)}
@@ -81,10 +67,20 @@ If you catch a typo or incorrect information, please contact me. I will update a
 
 \newpage
 \section{Statistical Modelling}
+\textbf{Readings:} \textit{Dekking et al., Chapter 13 \& 17}
+
+\begin{mdframed}[style=Summary]
+    
+\end{mdframed}
 \subsection{General principle}
 \subsection{Estimating features of the model distribution}
 \newpage
 \section{Estimators and their distributions}
+\textbf{Readings:} \textit{Dekking et al., Chapter 14 \& 19}
+
+\begin{mdframed}[style=Summary]
+    
+\end{mdframed}
 \subsection{General principles}
 \subsection{Sampling distribution}
 \subsection{Distributions related to Normal distribution}
@@ -94,6 +90,11 @@ If you catch a typo or incorrect information, please contact me. I will update a
 \subsubsection*{$F(m,n)$ distribution}
 \newpage
 \section{Evaluating estimators}
+\textbf{Readings:} \textit{Dekking et al., Chapter 20}
+
+\begin{mdframed}[style=Summary]
+    
+\end{mdframed}
 \subsection{Unbiased estimator}
 \subsection{Jensen's inequality}
 \subsection{Efficiency of estimators}
@@ -101,11 +102,79 @@ If you catch a typo or incorrect information, please contact me. I will update a
 \subsection{Mean squared error}
 \newpage
 \section{Maximum likelihood estimation}
+\textbf{Readings:} \textit{Dekking et al., Chapter 21}
+
+\begin{mdframed}[style=Summary]
+    \textbf{Definition}
+    
+    \textit{Maximum likelihood estimator} is an estimator based on highest likelihood of possible parameter values given a dataset.
+    \newline
+    \textbf{Constructon of MLE}
+    \newline
+    1. Construct a likelihood function of parameter $\theta$, where $p_{\theta}(x_i)$ is the probability mass function associated with $\theta$
+    $$L(\theta) = \prod_{i=1}^{n}p_{\theta}(x_i)$$    
+    2. Construct a log-likelihood function based on likelihood function
+    $$l(\theta) = \sum_{i=1}^{n}\log p_\theta(x_i)$$
+    3. Take the partial derivative with respect to $\theta$ and set it equal to $0$
+    $$\frac{\partial}{\partial\theta}l(\theta) = 0$$
+    4. (optional) Take the second partial derivative to ensure it is the maximum
+    $$\frac{\partial^2}{\partial^2\theta}l(\theta) < 0$$
+    \newline
+    \textbf{note.}
+    
+    The above description is based on $\theta$ associated with discrete distribution. If dealing with continuous distribution, use the probability desnsity function $f_{\theta}(x_i)$ instead of $p_{\theta}(x_i)$.
+\end{mdframed}
 \subsection{General principle}
-\subsection{Likelihood and log-likelihood function}
-\subsection{Maximum likelihood estimator}
+In previous sections, some methods like methods of moments to estimate $\theta$ produced unrealistic estimate. 
+So, we need a better method that can reliably produce a sensible estimate.
+Maximum likelihood principle is associated with constructing a sensible estimator. 
+\subsection{MLE with Discrete distribution}
+The above summary basically explains how to derive $L(\theta)$ and $l(\theta)$
+\begin{mdframed}
+    \textbf{Example}
+    \newline
+    Consider \textit{i.i.d} distributions $X_1, ...,X_n \sim Bin(5,\theta)$. We are interested in deriving MLE $\hat{\theta}$ for $\theta$.
+    First, we know that $\theta$ is associated with discrete distribution. Also, we know that probability mass fucntion for binomial distribution is: 
+    $$p_{\theta}(x_i) = {5\choose x}\theta^{x_i}(1-\theta)^{5-x_i}$$
+    1. Construct a likelihood function $L(\theta)$:
+    $$L(\theta)=\prod_{i=1}^{n}{5\choose x}\theta^{x_i}(1-\theta)^{5-x_i}$$
+    2. Construct a log-likelihood function $l(\theta)$:
+    $$l(\theta) = \sum_{i=1}^{n}\ln{5\choose x}+\ln(\theta^{x_i})+\ln((1-\theta)^{5-x_i})=\sum_{i=1}^{n}\ln({5\choose x})+x_i\ln(\theta)+(5-x_i)\ln(1-\theta)$$
+    3. Take the partial derivative with respect to $\theta$.
+    
+    Note that ${5\choose x}$ is a constant, so after taking the partial derivative, it will be gone.
+    $$\frac{\partial}{\partial\theta}l(\theta)=\sum_{i=1}^{n}\frac{1}{\theta}x_i-\frac{1}{1-\theta}(5-x_i)$$
+    $$\frac{\partial}{\partial\theta}l(\theta)=\frac{1}{\theta}\sum_{i=1}^{n}x_i-\frac{1}{1-\theta}\sum_{i=1}^{n}(5-x_i)$$
+
+    4. Set $l(\theta) = 0$ and solve for $\theta$
+    $$\frac{1}{\theta}\sum_{i=1}^{n}x_i=\frac{1}{1-\theta}\sum_{i=1}^{n}(5-x_i) \implies \theta = \frac{\sum_{i=1}^{n}x_i}{\sum_{i=1}^{n}5-x_i+x_i}=\frac{1}{5n}\sum_{i=1}^{n}x_i$$
+    Thus, $\hat{\theta} = \frac{1}{5n}\sum_{i=1}^{n}x_i$ is the MLE for $\theta$.
+
+
+\end{mdframed}
+\subsection{MLE with continuous distribution}
+\begin{mdframed}
+    \textbf{Example}
+    \newline
+    Consider \textit{i.i.d} distributions $X_1, ...,X_n \sim Exp(\lambda)$. We are interested in deriving MLE $\hat{\lambda}$ for $\lambda$.
+    First, we know that $\theta$ is associated with continuous distribution. Also, we know that probability density function for binomial distribution is:
+    $$f_{\lambda}(x)=\lambda e^{-\lambda x}, \text{ for } x \ge 0$$
+    1. Construct a likelihood function $L(\lambda)$
+    $$L(\lambda) = \prod_{i=1}^{n}\lambda e^{-\lambda x_i}$$
+    2. Construct a log-likelihood function $l(\lambda)$
+    $$l(\lambda) = \sum_{i=1}^{n}\ln(\lambda e^{-\lambda x_i})=\sum_{i=1}^{n}(\ln{\lambda}-\lambda x_i)$$
+    3. Take the partial derivative with respect to $\lambda$
+    $$\frac{\partial}{\partial\lambda}l(\lambda) = \sum_{i=1}^{n}(\frac{1}{\lambda}-x_i)=\frac{n}{\lambda}-\sum_{i=1}^{n}x_i$$
+    4. Set $l(\lambda) = 0$ and solve for $\lambda$
+    $$\frac{n}{\lambda} = \sum_{i=1}^{n}x_i \implies \lambda = \frac{1}{n}\sum_{i=1}^{n}x_i$$
+    Thus, $\hat{\lambda} = \frac{1}{n}\sum_{i=1}^{n}x_i$ is the MLE for $\lambda$
+
+\end{mdframed}
+
+
 \newpage
 \section{Bootstrap principles}
+\textbf{Readings:} \textit{Dekking et al., Chapter 18}
 \begin{mdframed}[style=Summary]
     \textbf{General definition}
     
@@ -133,7 +202,6 @@ If you catch a typo or incorrect information, please contact me. I will update a
 \subsection{Parametric bootstrapping method}
 
 \newpage
-
 \section{Confidence intervals}
 \textbf{Readings:} \textit{Dekking et al., Chapter 23 \& 24}
 \begin{mdframed}[style=Summary]
@@ -324,19 +392,28 @@ As mentioned in previous section, make sure to practice bootsrapping with small 
 
 \newpage
 \section{Statistical testing}
-
+\begin{mdframed}[style=Summary]
+    
+\end{mdframed}
 \newpage
 \section{Goodness of fit}
-
+\begin{mdframed}[style=Summary]
+    
+\end{mdframed}
 \newpage
 \section{Introduction to Bayesian inference}
-The next three sections are my favorite part of statistics. 
-
+\begin{mdframed}[style=Summary]
+    
+\end{mdframed}
 \newpage
 \section{Estimation in Bayesian inference}
-
+\begin{mdframed}[style=Summary]
+    
+\end{mdframed}
 \newpage
 \section{Predictive modelling}
-\section{Endnote}
-
+\begin{mdframed}[style=Summary]
+    
+\end{mdframed}
+\newpage
 \end{document}
